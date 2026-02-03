@@ -40,6 +40,7 @@ description: Planner tool to transform goals into actionable tasks in the Kanban
      - Scope: Max 80 lines per file. (Append `<!-- OV: LINES -->` to bypass if strictly necessary).
      - Keep scope atomic (one deliverable per task).
      - Complexity: Max 5 Checkpoints per task.
+     - DELIVERABLES: IF task type is [RESEARCH|REVERSE], output MUST be saved in `<WorkspaceRoot>/REPORTS/`.
 
 3. [VALIDATION]:
    - EXECUTE: `<WorkspaceRoot>/.agent/scripts/planner/validate_tasks.sh`
