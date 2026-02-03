@@ -28,8 +28,11 @@ An agnostic framework designed to structure, validate, and empower autonomous ag
 │
 │
 ├── scripts/
-│   └── planner/
-│       └── validate_tasks.sh   # Validates KANBAN tasks against strict project standards.
+│   ├── planner/
+│   |   └── validate_tasks.sh   # Validates KANBAN tasks against strict project standards.
+|   |
+│   └── executor/
+│       └── preflight.sh        # Validate existing tasks before starting.
 │
 └── workflows/                  # Slash Commands (Action protocols)
     ├── run_planning.md         # Generates tasks from MASTER_TASK.md
