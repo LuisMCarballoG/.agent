@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # validate_tasks.sh
 # -----------------------------------------------------------------------------
 # Validates KANBAN tasks against strict project standards.
