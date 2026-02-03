@@ -51,6 +51,7 @@ validate_structure() {
     local errors=""
     
     grep -q "^# " "$filepath" || errors="${errors}[NoTitle]"
+    grep -qE "^\*\*Priority:\*\* (CRITICAL|HIGH|MEDIUM|LOW)" "$filepath" || errors="${errors}[BadPriority]"
     grep -q "^## Objective" "$filepath" || errors="${errors}[NoObjective]"
     grep -q "^## Execution Plan" "$filepath" || errors="${errors}[NoExecPlan]"
     grep -q "^## Definition of Done" "$filepath" || errors="${errors}[NoDoD]"
