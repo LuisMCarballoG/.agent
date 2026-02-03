@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # validate_tasks.sh
 # -----------------------------------------------------------------------------
 # Validates KANBAN tasks against strict project standards.
@@ -6,7 +7,10 @@
 
 # --- CONFIGURATION ---
 
-KANBAN_DIR=".agent/KANBAN/todo"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../../" && pwd)"
+KANBAN_DIR="$PROJECT_ROOT/KANBAN/todo"
+
 MAX_LINES=80
 NAMING_REGEX="^[A-Z]{2,5}-[0-9]{2,}-[A-Z]{3,}-[a-z0-9_]+\.md$"
 
@@ -47,6 +51,7 @@ validate_structure() {
     local errors=""
     
     grep -q "^# " "$filepath" || errors="${errors}[NoTitle]"
+    grep -qE "^\*\*Priority:\*\* (CRITICAL|HIGH|MEDIUM|LOW)" "$filepath" || errors="${errors}[BadPriority]"
     grep -q "^## Objective" "$filepath" || errors="${errors}[NoObjective]"
     grep -q "^## Execution Plan" "$filepath" || errors="${errors}[NoExecPlan]"
     grep -q "^## Definition of Done" "$filepath" || errors="${errors}[NoDoD]"

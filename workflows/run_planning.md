@@ -22,17 +22,22 @@ description: Planner tool to transform goals into actionable tasks in the Kanban
    - INFERENCE:
      - DERIVE content directly from the `<WorkspaceRoot>/.agent/MASTER_TASK.md` description.
      - ADAPT constraints based on task type.
-   - EXECUTION:
-     - GENERATE: Create markdown tasks directly in the target path.
+   - EXECUTE:
+     - STRATEGY:
+       - 1. List all necessary steps in logical dependency order.
+       - 2. Assign IDs (01, 02...) preserving this exact order.
+       - 3. Assign flat Priority (e.g., HIGH) to sequential blocks.
+     - GENERATE: Create markdown tasks based on the strategy.
      - NAMING: `[TOPIC]-[ID]-[TYPE]-[SLUG].md`
        - Format:
          - TOPIC: 3-4 chars grouping code (e.g., AUTH, UI, API).
-         - ID: Sequential number (01, 02...).
+         - ID: Sequential number (01, 02...). Must reflect dependency order.
          - TYPE: FEAT, FIX, REFACTOR, DOCS, RESEARCH, REVERSE.
          - SLUG: Short description usually 2-3 words.
        - Example: `AUTH-01-RESE-jwt_options.md`
      - FORMAT: Use this minimalist template:
        - `# [Task Title]` (Header)
+       - `**Priority:** [CRITICAL|HIGH|MEDIUM|LOW]`
        - `## Objective`
        - `## Execution Plan`
        - `## Definition of Done`
@@ -40,6 +45,7 @@ description: Planner tool to transform goals into actionable tasks in the Kanban
      - Scope: Max 80 lines per file. (Append `<!-- OV: LINES -->` to bypass if strictly necessary).
      - Keep scope atomic (one deliverable per task).
      - Complexity: Max 5 Checkpoints per task.
+     - DELIVERABLES: IF task type is [RESEARCH|REVERSE], output MUST be saved in `<WorkspaceRoot>/REPORTS/`.
 
 3. [VALIDATION]:
    - EXECUTE: `<WorkspaceRoot>/.agent/scripts/planner/validate_tasks.sh`

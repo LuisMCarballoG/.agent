@@ -11,6 +11,7 @@ An agnostic framework designed to structure, validate, and empower autonomous ag
 1. Define the macro mission in `MASTER_TASK.md`.
 2. Execute `/run_planning` to generate micro tasks to be executed by the agent.
 3. Do visual inspection of the tasks in `KANBAN/todo/`, if something is wrong you can adjust the micro task manually or update `MASTER_TASK.md` and run `/run_planning` again.
+4. Execute `/run_agent` to start autonomous execution.
 
 ## 🏗️ System Structure
 
@@ -28,6 +29,11 @@ An agnostic framework designed to structure, validate, and empower autonomous ag
 │
 │
 ├── scripts/
+│   ├── executor/
+│   |   ├── next_task.sh        # Selects the next task to work on.
+│   |   ├── preflight.sh        # Validate existing tasks before starting.
+│   |   └── session_complete.sh # Validates that nothing is pending before closing.
+│   |
 │   └── planner/
 │       └── validate_tasks.sh   # Validates KANBAN tasks against strict project standards.
 │
@@ -44,5 +50,7 @@ An agnostic framework designed to structure, validate, and empower autonomous ag
 | :------------------------ | :---------------------------------------------------------------------------------------------------------------- |
 | **🎯 MASTER_TASK First**  | Everything starts from a human intention in this file. No hidden tasks.                                           |
 | **📂 Naming Conventions** | `KANBAN`, `REPORTS` (Uppercase) → **Human Domain**. <br> `scripts`, `workflows` (Lowercase) → **Machine Domain**. |
+| **⚖️ Zero-Bias**          | Strict priority execution: `CRITICAL` > `HIGH` > `MEDIUM` > `LOW`.                                                |
+| **📊 Reports Center**     | Final deliverables are strictly deposited in `REPORTS/`.                                                          |
 
 ---
