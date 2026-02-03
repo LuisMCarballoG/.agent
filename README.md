@@ -6,6 +6,10 @@ An agnostic framework designed to structure, validate, and empower autonomous ag
 
 ---
 
+## 🚀 Quick Start
+
+1. Define the macro mission in `MASTER_TASK.md`.
+
 ## 🏗️ System Structure
 
 ```text
