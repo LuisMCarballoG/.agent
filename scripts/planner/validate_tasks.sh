@@ -7,7 +7,10 @@ set -euo pipefail
 
 # --- CONFIGURATION ---
 
-KANBAN_DIR=".agent/KANBAN/todo"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../../" && pwd)"
+KANBAN_DIR="$PROJECT_ROOT/KANBAN/todo"
+
 MAX_LINES=80
 NAMING_REGEX="^[A-Z]{2,5}-[0-9]{2,}-[A-Z]{3,}-[a-z0-9_]+\.md$"
 
