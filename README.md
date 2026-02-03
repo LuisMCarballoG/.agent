@@ -47,6 +47,7 @@ An agnostic framework designed to structure, validate, and empower autonomous ag
 | :------------------------ | :---------------------------------------------------------------------------------------------------------------- |
 | **🎯 MASTER_TASK First**  | Everything starts from a human intention in this file. No hidden tasks.                                           |
 | **📂 Naming Conventions** | `KANBAN`, `REPORTS` (Uppercase) → **Human Domain**. <br> `scripts`, `workflows` (Lowercase) → **Machine Domain**. |
+| **⚖️ Zero-Bias**          | Strict priority execution: `CRITICAL` > `HIGH` > `MEDIUM` > `LOW`.                                                |
 | **📊 Reports Center**     | Final deliverables are strictly deposited in `REPORTS/`.                                                          |
 
 ---
