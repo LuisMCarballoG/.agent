@@ -38,8 +38,10 @@ An agnostic framework designed to structure, validate, and empower autonomous ag
 │       └── validate_tasks.sh   # Validates KANBAN tasks against strict project standards.
 │
 └── workflows/                  # Slash Commands (Action protocols)
-    ├── run_planning.md         # Generates tasks from MASTER_TASK.md
-    └── run_agent.md            # Sequential autonomous execution.
+    ├── run_agent.md            # Sequential autonomous execution.
+    ├── run_god.md              # Omnipotent Execution: Plan -> Auto-Validate -> Execute.
+    └── run_planning.md         # Generates tasks from MASTER_TASK.md
+
 ```
 
 ---

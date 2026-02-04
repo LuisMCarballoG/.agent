@@ -30,3 +30,14 @@ description: Agentic IDE will execute tasks sequentially with maximum autonomy.
      - EXPECT: EXIT_CODE == 0
      - ON_ERROR: RESTART Loop. (Inconsistency detected: Tasks remaining. Go to Step 3).
    - NOTIFY: "Protocol complete. All tasks processed."
+
+---
+
+## ⛔ Anti-Patterns (FORBIDDEN)
+
+| Anti-Pattern                                | Why it is Wrong                | Correct Action                                      |
+| ------------------------------------------- | ------------------------------ | --------------------------------------------------- |
+| **"Completed critical tasks"**              | Partial completion is failure. | **MUST** empty the TODO list completely.            |
+| **"Do you want me to continue?"**           | Violates STRICT_AUTONOMY.      | **IMMEDIATELY** jump to Step 3 (LOOP).              |
+| **"Session Complete" (with files in TODO)** | False positive / Laziness.     | Run `session_complete.sh` to verify truth.          |
+| **"Pausing for feedback"**                  | Interrupts the flow.           | Continue working until `TODO` + `IN_PROGRESS` == 0. |
